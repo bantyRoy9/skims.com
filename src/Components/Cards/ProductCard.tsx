@@ -7,7 +7,7 @@ const ProductCard = ({ product, addProduct, addtocard, width = 140, activecard =
     console.log('working');
 
     return (
-        <button onClick={(e) => { e.stopPropagation(); nagivate(isproduct ? `products/${product.id}` : `#${activecard}`) }} key={product?.id ?? product} className={`card ${isproduct ? '' : 'slidecard'} ${activecard === -1 ? 'border-green-600' : 'border-[#e8e8e8]'}`}>
+        <button onClick={(e) => { e.stopPropagation(); nagivate(isproduct ? `product` : `#${activecard}`) }} key={product?.id ?? product} className={`card ${isproduct ? '' : 'slidecard'} ${activecard === -1 ? 'border-green-600' : 'border-[#e8e8e8]'}`}>
             {/* <div className="card-content">
                 <img loading="eager" decoding="async" alt="" sizes="(max-width: 1023px) 35vw, 25vw" className="inline-block   object-contain w-full h-full" src="https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-AP-DRS-0596-CLO-FLT_grande.jpg?v=1740612371&amp;auto=format&amp;ixlib=react-9.10.0" srcSet="https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-AP-DRS-0596-CLO-FLT_grande.jpg?v=1740612371&amp;auto=format&amp;ixlib=react-9.10.0&amp;w=100 100w,
 https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-AP-DRS-0596-CLO-FLT_grande.jpg?v=1740612371&amp;auto=format&amp;ixlib=react-9.10.0&amp;w=116 116w,
@@ -53,7 +53,8 @@ https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-AP-DRS-0
                 <div className="relative h-full w-full flex flex-col justify-between select-none">
                     <div className="relative cursor-pointer mt-6 mb-4 mx-auto w-full">
                         <div className="w-[100px] h-[100px] mx-auto md:!w-[130px] md:!h-[130px]">
-                            <img loading="eager" decoding="async" alt="" sizes="(max-width: 1023px) 35vw, 25vw" className="inline-block w-full h-full object-contain" src="https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-AP-DRS-0596-CLO-FLT_grande.jpg?v=1740612371&amp;auto=format&amp;ixlib=react-9.10.0" srcSet="https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-AP-DRS-0596-CLO-FLT_grande.jpg?v=1740612371&amp;auto=format&amp;ixlib=react-9.10.0&amp;w=100 100w,
+                            <img loading="eager" decoding="async" alt="" sizes="(max-width: 1023px) 35vw, 25vw" className="inline-block w-full h-full object-contain" src=
+                            "https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-AP-DRS-0596-CLO-FLT_grande.jpg?v=1740612371&amp;auto=format&amp;ixlib=react-9.10.0" srcSet="https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-AP-DRS-0596-CLO-FLT_grande.jpg?v=1740612371&amp;auto=format&amp;ixlib=react-9.10.0&amp;w=100 100w,
 https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-AP-DRS-0596-CLO-FLT_grande.jpg?v=1740612371&amp;auto=format&amp;ixlib=react-9.10.0&amp;w=116 116w,
 https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-AP-DRS-0596-CLO-FLT_grande.jpg?v=1740612371&amp;auto=format&amp;ixlib=react-9.10.0&amp;w=135 135w,
 https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-AP-DRS-0596-CLO-FLT_grande.jpg?v=1740612371&amp;auto=format&amp;ixlib=react-9.10.0&amp;w=156 156w,

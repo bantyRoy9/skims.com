@@ -1,7 +1,106 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+  font-family: 'Tstar Pro Headline';
+  src: url('./../public/fonts/T-StarPro-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'CentraleSansRegular';
+  src: url('./../public/fonts/CentraleSansRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  --oke-widget-spaceAbove: 20px;
+  --oke-widget-spaceBelow: 20px;
+  --oke-starRating-spaceAbove: 0;
+  --oke-starRating-spaceBelow: 0;
+  --oke-button-backgroundColor: #f7f7f8;
+  --oke-button-backgroundColorHover: #f4f4f6;
+  --oke-button-backgroundColorActive: #676986;
+  --oke-button-textColor: #272d45;
+  --oke-button-textColorHover: #272d45;
+  --oke-button-textColorActive: #fff;
+  --oke-button-borderColor: #dbdde4;
+  --oke-button-borderColorHover: #dbdde4;
+  --oke-button-borderColorActive: #676986;
+  --oke-button-borderRadius: 4px;
+  --oke-button-borderWidth: 1px;
+  --oke-button-fontWeight: 700;
+  --oke-button-fontSize: var(--oke-text-regular, 14px);
+  --oke-button-fontFamily: inherit;
+  --oke-border-color: #e5e5eb;
+  --oke-border-width: 1px;
+  --oke-text-primaryColor: #2c3e50;
+  --oke-text-secondaryColor: #676986;
+  --oke-text-small: 12px;
+  --oke-text-regular: 14px;
+  --oke-text-large: 20px;
+  --oke-text-fontFamily: inherit;
+  --oke-avatar-size: 48px;
+  --oke-avatar-backgroundColor: #e5e5eb;
+  --oke-avatar-placeholderTextColor: #2c3e50;
+  --oke-highlightColor: #0e7a82;
+  --oke-shadingColor: #f7f7f8;
+  --oke-productImageSize: 48px;
+  --oke-attributeBar-shadingColor: #9a9db1;
+  --oke-attributeBar-borderColor: undefined;
+  --oke-attributeBar-backgroundColor: #d3d4dd;
+  --oke-attributeBar-markerColor: #00caaa;
+  --oke-filter-backgroundColor: #fff;
+  --oke-filter-backgroundColorActive: #676986;
+  --oke-filter-borderColor: #dbdde4;
+  --oke-filter-borderColorActive: #676986;
+  --oke-filter-textColor: #2c3e50;
+  --oke-filter-textColorActive: #fff;
+  --oke-filter-borderRadius: 100px;
+  --oke-filter-searchHighlightColor: #b2f9e9;
+  --oke-mediaGrid-chevronColor: #676986;
+  --oke-stars-foregroundColor: #62554a;
+  --oke-stars-backgroundColor: #e5e5e5;
+  --oke-stars-borderWidth: 0;
 
+  --font-primary: "Tstar Pro Headline", sans-serif;
+    --font-secondary: "Tstar Pro Bold", sans-serif;
+    --font-tertiary: "Centra No1 Book", sans-serif;
+    --font-quaternary: "Centra No1 Bold", sans-serif;
+    --font-quinary: "Roboto Mono", sans-serif;
+    --text-p: "Centra No1 Book", sans-serif;
+}
+:host, :root {
+  --fa-style-family-brands: "Font Awesome 6 Brands";
+  --fa-font-brands: normal 400 1em / 1 "Font Awesome 6 Brands";
+}
+*, :after, :before {
+  border: 0 solid #b6b1ad;
+  box-sizing: border-box;
+}
+.font-primary {
+  /* font-family: Tstar Pro Headline, sans-serif; */
+  font-family: 'Tstar Pro Headline', sans-serif;
+}
+.font-quinary {
+  font-family: Roboto Mono, sans-serif;
+  font-optical-sizing: auto;
+  letter-spacing: .04em;
+  line-height: 1.16;
+}
+p, sub {
+  font-family: 'CentraleSansRegular';
+}
+.text-brown {
+  --tw-text-opacity: 1;
+  color: #2d2a26;
+  color: rgba(45, 42, 38, var(--tw-text-opacity, 1));
+}
+.font-primary, .font-secondary {
+  letter-spacing: .04em;
+  line-height: 1;
+  /* text-transform: uppercase; */
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,14 +110,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 /* Reset default body styles */
 body {
   @apply m-0 leading-[1.15];
 }
+
 .home-container{
   @apply max-w-[1260px] m-auto
 }
@@ -61,18 +157,18 @@ body {
 
 /* Card styles */
 .card {
-  @apply bg-white  border-l-[0.5px] border-y-[0.5px] transition-transform duration-200  shadow-[2px_2px_8px_rgba(0,0,0,0.04)];
+  @apply bg-white transition-transform duration-200  shadow-[2px_2px_8px_rgba(0,0,0,0.04)];
   text-align: inherit !important;
 }
 /* .card:not(:first-child){
   @apply border-[0.5px]
 } */
-.card:first-child{
+/* .card:first-child{
   @apply border-[0.5px] border-r-0
 }
 .card:last-child{
   @apply border-[0.5px]
-}
+} */
 .card-content{
   @apply flex flex-col px-3 items-center   h-full 
 }
@@ -115,7 +211,7 @@ body {
 }
 /* Section styling */
 .section {
-  @apply mt-6 px-4;
+  @apply mt-6 ;
 }
 
 .section-title {
@@ -136,3 +232,11 @@ img {
   @apply max-w-full h-auto block;
 }
 
+.text-primary {
+  --tw-text-opacity: 1;
+  /* color: #2d2a26; */
+  color: rgba(45, 42, 38, var(--tw-text-opacity, 1));
+}
+.text-secondary {
+  color: #986b58;
+}
