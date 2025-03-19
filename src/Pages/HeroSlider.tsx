@@ -17,9 +17,15 @@ const HeroSlider: React.FC = () => {
                                     <div className="h-full">
                                         <div className="block h-full">
                                             <div className="relative h-full">
-                                                <video className="w-full object-cover h-full" autoPlay loop playsInline
-                                                    src="https://skims.imgix.net/videos/c/o/v/4eeb98fac5cb40c082d9b826b4f1510d.mp4"
-                                                />
+                                            <video 
+  className="w-full object-cover h-full" 
+  autoPlay 
+  loop 
+  muted 
+  playsInline 
+  src="https://skims.imgix.net/videos/c/o/v/4eeb98fac5cb40c082d9b826b4f1510d.mp4"
+/>
+
                                             </div>
                                         </div>
                                     </div>

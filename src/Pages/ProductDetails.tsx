@@ -1,17 +1,37 @@
 import React from 'react';
-
+import ProductGallery from '../Components/Product/ProductGalary';
+import ProductZoom from '../Components/Product/ProductGalary';
+const images = [
+    {
+      src: "https://skims.imgix.net/s/files/1/0259/5448/4284/files/LS-LST-7893M-GUN-SB-SKIMS-MENS_0005-FR.jpg?v=1738122119&auto=format&w=106&h=106&ixlib=react-9.10.0",
+      alt: "HEAVYWEIGHT COTTON MENS RELAXED LONG SLEEVE T-SHIRT | GUNMETAL ON A MODEL FRONT VIEW | FOCUS: 0.0, 1.0, 0.9",
+    },
+    {
+      src: "https://skims.imgix.net/s/files/1/0259/5448/4284/files/LS-LST-7893M-GUN-SB-SKIMS-MENS_0043-SD.jpg?v=1738122119&auto=format&w=106&h=106&ixlib=react-9.10.0",
+      alt: "HEAVYWEIGHT COTTON MENS RELAXED LONG SLEEVE T-SHIRT | GUNMETAL ON A MODEL SIDE VIEW | FOCUS: 0.0, 1.0, 0.9",
+    },
+    {
+      src: "https://skims.imgix.net/s/files/1/0259/5448/4284/files/LS-LST-7893M-GUN-SB-SKIMS-MENS_0029-FR.jpg?v=1738122119&auto=format&w=106&h=106&ixlib=react-9.10.0",
+      alt: "HEAVYWEIGHT COTTON MENS RELAXED LONG SLEEVE T-SHIRT | GUNMETAL ON A MODEL FRONT VIEW | FOCUS: 0.0, 1.0, 0.9",
+    },
+    {
+      src: "https://skims.imgix.net/s/files/1/0259/5448/4284/files/LS-LST-7893M-GUN-SB-SKIMS-MENS_0034-FR.jpg?v=1738122119&auto=format&w=106&h=106&ixlib=react-9.10.0",
+      alt: "HEAVYWEIGHT COTTON MENS RELAXED LONG SLEEVE T-SHIRT | GUNMETAL ON A MODEL FRONT VIEW | FOCUS: 0.0, 1.0, 0.9",
+    },
+    {
+      src: "https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-HEAVYWEIGHTCOTTON-GUN-SW.jpg?v=1738119933&auto=format&w=106&h=106&ixlib=react-9.10.0",
+      alt: "HEAVYWEIGHT COTTON MENS RELAXED LONG SLEEVE T-SHIRT | GUNMETAL ADDITIONAL FABRIC DETAILS",
+    },
+    {
+      src: "https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-LS-LST-7893M-GUN.jpg?v=1738122119&auto=format&w=106&h=106&ixlib=react-9.10.0",
+      alt: "HEAVYWEIGHT COTTON MENS RELAXED LONG SLEEVE T-SHIRT | GUNMETAL FLAT ON A WHITE BACKGROUND | FLT",
+    },
+  ];
 const ProductPage: React.FC = () => {
   return (
     <div className="flex flex-col pt-2 relative min-h-96 max-w-screen-2xl mx-auto lg:pt-0 lg:flex-row lg:flex-nowrap lg:justify-between lg:items-start md:px-5">
       {/* Left Side - Product Images */}
       <div className="pb-24 hidden lg:flex lg:w-1/2 xl:w-7/12 sticky top-[100px]">
-        <div className="lg:hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <div className="flex justify-center items-center min-h-[inherit] h-full w-full">
-            <div>
-              <video autoPlay loop playsInline className="w-10 h-10" src="https://cdn.shopify.com/oxygen-v2/26957/18156/37484/1511294/assets/skims-loading-icon-80x80-24-fps-58KbLZ2F.webm"></video>
-            </div>
-          </div>
-        </div>
         <div className="h-full w-full flex flex-row justify-items-start gap-6 overflow-x-hidden">
           <div className="w-28">
             <div className="swiper swiper-initialized swiper-vertical swiper-free-mode swiper-watch-progress thumbnailSwiper swiper-backface-hidden swiper-thumbs">
@@ -30,39 +50,9 @@ const ProductPage: React.FC = () => {
                 ))}
               </div>
             </div>
+            
           </div>
-          <div className="w-full relative mx-auto lg:mx-0 lg:max-w-[calc(50vw-15rem)] xl:max-w-[calc(56vw-15rem)] 2xl:max-w-xl">
-            <div className="swiper swiper-initialized swiper-horizontal swiper-free-mode swiper-autoheight mainSwiper pb-0 w-full horizontal swiper-backface-hidden">
-              <div className="swiper-wrapper" style={{ height: '296px', transform: 'translate3d(0px, 0px, 0px)' }}>
-                {/* Main Images */}
-                {[
-                  'https://skims.imgix.net/s/files/1/0259/5448/4284/files/AP-TSH-0638-SPN-DB-SKIMS-LOUNGEWEAR_0015-FR.jpg?auto=format&w=2000&h=2000&q=100',
-                  'https://skims.imgix.net/s/files/1/0259/5448/4284/files/AP-TSH-0638-SPN-DB-SKIMS-LOUNGEWEAR_0025-SD.jpg?auto=format&w=2000&h=2000&q=100',
-                  'https://skims.imgix.net/s/files/1/0259/5448/4284/files/AP-TSH-0638-SPN-DB-SKIMS-LOUNGEWEAR_0023-SD.jpg?auto=format&w=2000&h=2000&q=100',
-                  'https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-COTTON_20JERSEY-SPN-SW-2_85a03ed9-9bb8-449b-848f-572389df4b32.jpg?auto=format&w=2000&h=2000&q=100',
-                  'https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-SP-TSH-0638-SPN-FLT.jpg?auto=format&w=2000&h=2000&q=100',
-                ].map((src, index) => (
-                  <div key={index} className="swiper-slide" data-swiper-slide-index={index} style={{ marginRight: '24px' }}>
-                    <div className="w-full">
-                      <div className="swiper-zoom-container">
-                        <img loading="eager" fetchPriority="high" decoding="async" src={src} alt="" className="inline-block w-[2000px] h-[2000px] object-contain" width="2000" height="2000" />
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="swiper-button-prev"></div>
-              <div className="swiper-button-next"></div>
-              <div className="swiper-scrollbar swiper-scrollbar-horizontal">
-                <div className="swiper-scrollbar-drag" style={{ transform: 'translate3d(0px, 0px, 0px)', width: '0px' }}></div>
-              </div>
-              <div className="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
-                {[...Array(5)].map((_, index) => (
-                  <span key={index} className={`swiper-pagination-bullet ${index === 0 ? 'swiper-pagination-bullet-active' : ''}`}></span>
-                ))}
-              </div>
-            </div>
-          </div>
+        <ProductZoom src={images[0].src}/>
         </div>
       </div>
 
