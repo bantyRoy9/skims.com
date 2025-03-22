@@ -79,8 +79,16 @@
   box-sizing: border-box;
 }
 .font-primary {
-  /* font-family: Tstar Pro Headline, sans-serif; */
   font-family: 'Tstar Pro Headline', sans-serif;
+  font-weight: 600;
+}
+.text-xl {
+  font-size: 1.25rem;
+}
+.\!bg-grayLighter {
+  --tw-bg-opacity: 1 !important;
+  background-color: #faf8f5 !important;
+  background-color: rgba(250,248,245, 1) !important;
 }
 .font-quinary {
   font-family: Roboto Mono, sans-serif;
