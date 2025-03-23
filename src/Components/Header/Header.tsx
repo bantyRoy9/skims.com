@@ -13,7 +13,7 @@ const Header: React.FC = () => {
     const dispatch = useAppDispatch();
   return (
     <>
-    <Drawer headerName='My Cart' position={"right"} isOpen={isDrawOpen} onClose={() => dispatch(setSetIsDrawOpen(false))} children={<AddToCardDrawer/>}/>
+    <Drawer headerName='My Cart' position={"bottom"} isOpen={isDrawOpen} onClose={() => dispatch(setSetIsDrawOpen(false))} children={<AddToCardDrawer/>}/>
     <header className="fixed top-0 z-[101] w-full">
       <div className="flex justify-center transition-colors bg-white">
         <div className="header flex items-center sticky top-0 z-[1] mx-3 w-full max-w-[1600px] justify-between px-[13px] text-center md:px-[15px] h-20">
