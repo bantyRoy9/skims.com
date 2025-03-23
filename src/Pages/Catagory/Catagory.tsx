@@ -326,10 +326,15 @@ const FleeceLoungeSection: React.FC = () => {
 };
 const Catagory = (props: Props) => {
   return (
-    <>
-    <FilterHeader/>
-    <FleeceLoungeSection />
-    </>
+    <div className='mx-auto max-w-[1600px]'>
+      <div className='md:px-6 px-0'>
+        <div className='flex w-full flex-col items-start pb-4 lg:pb-4 text-left border-t border-grayLighter lg:border-0'>
+          <FilterHeader />
+          <FleeceLoungeSection />
+
+        </div>
+      </div>
+    </div>
   )
 }
 

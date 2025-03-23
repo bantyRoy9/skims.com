@@ -1,4 +1,7 @@
 import React from 'react';
+import { useAppDispatch } from '../../Redux/Store';
+import { setSetIsDrawOpen } from '../../Redux/Store.Reducers';
+import { useAddToCart } from '../../Utils/customHooks/useAddToCart';
 
 const SearchButton: React.FC = () => {
   return (
@@ -36,7 +39,22 @@ const AccountButton: React.FC = () => {
 const WishlistButton: React.FC = () => {
   return (
     <a aria-label="Wishlist" data-discover="true" className="flex" href="/en-in/pages/wishlist">
-      <div className="relative w-6 h"></div></a>)}
+      <div className="relative w-6 h"></div></a>)
+};
+const AddtocardButton: React.FC = () => {
+  const dispatch = useAppDispatch(),{totalProduct}=useAddToCart();
+  const total= totalProduct();
+  return (
+    <button className="relative w-6 h-6 p-[.188rem]" onClick={() => dispatch(setSetIsDrawOpen(true))}>
+      <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto" aria-hidden="true">
+        <path d="M12.3497 4.60923C12.3497 2.61374 10.7306 0.999817 8.74027 0.999817C6.74994 0.999817 5.13086 2.61889 5.13086 4.60923M16.4689 17.0002H1L2.54689 6.00177H14.922L16.4689 17.0002Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      {total ? <span className="absolute -top-1 -right-2 w-4 h-4 rounded-full bg-primary text-white text-xs flex items-center justify-center transition-colors" style={{ backgroundColor: "rgb(121, 121, 121)", color: "rgb(255, 255, 255)" }}>
+        {total}
+      </span>:''}
+    </button>
+  )
+}
 
 const RightSide: React.FC = () => {
   return (
@@ -48,9 +66,7 @@ const RightSide: React.FC = () => {
         </button>
         <SearchButton />
         <AccountButton />
-        <WishlistButton />
-        {/* <CartButton />
-        <MenuButton /> */}
+        <AddtocardButton />
       </nav>
     </div>
   );

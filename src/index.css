@@ -156,7 +156,7 @@ body {
 
 /* Horizontal Card List */
 .horizontal-card-list {
-  @apply flex gap-0 overflow-x-auto pb-2;
+  @apply flex gap-0 overflow-x-auto;
 }
 
 .horizontal-card-list::-webkit-scrollbar {
@@ -247,4 +247,45 @@ img {
 }
 .text-secondary {
   color: #986b58;
+}
+
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  bottom: 0px;
+  left: 0px;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  z-index: 10001;
+  overflow-y: auto;
+  animation: overlayFadeIn 400ms ease;
+}
+
+@keyframes overlayFadeIn{
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+    display: none;
+}
+1% {
+    background-color: rgba(0, 0, 0, 0.1);
+    display: block;
+}
+100% {
+    background-color: rgba(0, 0, 0, 0.7);
+    display: block;
+}
+}
+body:has(.modal-overlay) {
+  overflow: hidden;
+}
+.bg-primary {
+  --tw-bg-opacity: 1;
+  background-color: #2d2a26;
+  /* background-color: rgba(45, 42, 38, var(--tw-bg-opacity, 1)); */
+}
+  
+.text-sienna {
+  --tw-text-opacity: 1;
+  color: #986b58;
+  color: rgba(152, 107, 88, var(--tw-text-opacity, 1));
 }

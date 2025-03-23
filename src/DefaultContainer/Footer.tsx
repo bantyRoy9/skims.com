@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
                     </div>
                 </div>
                 <div className="flex items-center my-10 justify-around bg-gray-50 border-neutral-50 mx-auto px-4 py-5 text-xs text-gray-600">
-                    <p className="flex-1">© Blink Commerce Private Limited, 2016-2025</p>
+                    <p className="flex-1">© 2016-2025</p>
                     <div className="flex flex-wrap justify-center items-center space-x-5 flex-1">
                         <h2 className="text-sm font-semibold">Download App</h2>
                         <img src="https://blinkit.com/d61019073b700ca49d22.png" alt="App Store" className="h-8" />
@@ -88,7 +88,7 @@ const Footer: React.FC = () => {
                     </div>
                 </div>
                 <div className="mt-4 text-gray-500">
-                    <p className="text-sm tracking-wide font-light"> “Blinkit” is owned & managed by "Blink Commerce Private Limited" and is not related, linked or interconnected in whatsoever manner or nature, to “GROFFR.COM” which is a real estate services business operated by “Redstone Consultancy Services Private Limited”.</p>
+                    {/* <p className="text-sm tracking-wide font-light"> “Blinkit” is owned & managed by "Blink Commerce Private Limited" and is not related, linked or interconnected in whatsoever manner or nature, to “GROFFR.COM” which is a real estate services business operated by “Redstone Consultancy Services Private Limited”.</p> */}
                 </div>
             </footer>
     );

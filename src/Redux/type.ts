@@ -3,12 +3,19 @@ export interface IProduct {
   id: number
   name: string
   description: string
+  productdetails:{
+    details:string
+  },
   base_price: string
+  promo:{
+    heading:string,
+    subheading:string
+  }
   created_at: string
-  brand: IBrand
-  category: ICategory
+  brandName: string
+  // category: ICategory
   image_url:string
-  shopProducts: IShopProduct[]
+  // shopProducts: IShopProduct[]
   sliding_images:string[]
 }
 
