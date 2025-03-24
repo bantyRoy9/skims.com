@@ -1,5 +1,5 @@
 import React from 'react'
-import { HorizontalCardList, HorizontalImageSlider } from '../Components';
+import { HorizontalCardList} from '../Components';
 import ProductCard from '../Components/Cards/ProductCard';
 import QuadrantModule from './QuadrantModule';
 import HomeHero from './HomeHero';
@@ -7,10 +7,7 @@ import SplitTout from './SplitTout';
 import SliderComponent from './sliderComponent';
 import HeroSlider from './HeroSlider';
 import { dd } from '../Utils/baseUrl';
-import Footer from '../DefaultContainer/Footer';
-
 type Props = {}
-
 const Home = (props: Props) => {
   return (
     <>

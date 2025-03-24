@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Logo from './Logo';
 import HeaderLinks from './HeaderLinks';
 import RightSide from './RightSide';
