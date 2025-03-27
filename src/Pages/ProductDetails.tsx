@@ -20,7 +20,7 @@ interface ColorSwatchesProps {
   title: string;
   colors: ColorSwatch[];
 }
-const ProductDetails:  React.FC<{product:IProduct}> = ({product}) => {
+const ProductDetails: React.FC<{ product: IProduct }> = ({ product }) => {
   return (
     <div className="product-details pb-10">
       <div className="pt-10">
@@ -168,8 +168,8 @@ const ColorSwatches: React.FC<ColorSwatchesProps> = ({ title, colors }) => {
     </div>
   );
 };
-const ProductForm: React.FC<{product:IProduct}> = ({product}) => {
-  const {addProduct}=useAddToCart();
+const ProductForm: React.FC<{ product: IProduct }> = ({ product }) => {
+  const { addProduct } = useAddToCart();
   return (
     <div className="product-form">
       <div className="w-full">
@@ -187,7 +187,7 @@ const ProductForm: React.FC<{product:IProduct}> = ({product}) => {
         </div>
         <SizeSelector />
         <div>
-          <button onClick={(e)=>addProduct(e,1,product)} className="flex justify-center items-center font-primary tracking-[0.04em] leading-custom-snug px-4 pt-4 pb-3.5 text-base leading-none border border-primary bg-primary text-white hover:bg-secondary hover:border-secondary disabled:bg-white disabled:text-tertiary disabled:border-tertiary gap-2 w-full mt-10 lg:mt-5 transition-colors duration-300" style={{ backgroundColor: "rgb(121, 121, 121)", color: "rgb(255, 255, 255)", borderColor: "rgb(121, 121, 121)" }}>
+          <button onClick={(e) => addProduct(e, 1, product)} className="flex justify-center items-center font-primary tracking-[0.04em] leading-custom-snug px-4 pt-4 pb-3.5 text-base leading-none border border-primary bg-primary text-white hover:bg-secondary hover:border-secondary disabled:bg-white disabled:text-tertiary disabled:border-tertiary gap-2 w-full mt-10 lg:mt-5 transition-colors duration-300" style={{ backgroundColor: "rgb(121, 121, 121)", color: "rgb(255, 255, 255)", borderColor: "rgb(121, 121, 121)" }}>
             <span>Add To Bag</span>
           </button>
           {/* <button className="flex justify-center items-center font-primary tracking-[0.04em] leading-custom-snug transition-colors px-4 pt-4 pb-3.5 text-base leading-none bg-white text-primary border border-primary hover:text-secondary hover:border-secondary disabled:text-tertiary disabled:border-tertiary gap-2 w-full mt-10 lg:mt-5" style={{ backgroundColor: 'rgb(255, 255, 255)', color: 'rgb(45, 42, 38)' }}>
@@ -205,6 +205,7 @@ interface Product {
   color: string;
   imageUrl: string;
   badge?: string;
+  sizes?:string[]
 }
 
 interface ProductCardProps {
@@ -218,25 +219,17 @@ interface ProductCarouselProps {
 // ProductCard Component
 const ProductCards: React.FC<ProductCardProps> = ({ product }) => {
   return (
-    <div
-      className="swiper-slide cursor-pointer bg-white h-full pt-4 pl-4 pr-4 w-[15.625rem] min-h-[22.125rem] md:min-h-[27rem] md:w-[18.2rem]"
-      aria-roledescription="product card"
-      role="group"
-      style={{ marginRight: '16px' }}
-    >
-      <div className="relative h-full w-full flex flex-col flex-1 select-none">
-        {product.badge && (
+    <div className="cursor-pointer bg-white h-full pt-4 pl-4 pr-4 w-[15.625rem] min-h-[22.125rem] md:min-h-[27rem] md:w-[18.2rem]">
+      <div className="relative h-full w-full flex flex-col flex-1 gap-3 select-none">
+        {product.badge ? (
           <div id={`badge-${product.id}`}>
-            <div
-              className="border border-primary rounded-sm text-center bg-primary text-white py-0.5 px-1.5 absolute top-0 left-0 z-10"
-              role="tooltip"
-            >
+            <div className="border border-primary rounded-sm text-center bg-primary text-white py-0.5 px-1.5 absolute top-0 left-0 z-10" role="tooltip">
               <p className="font-primary capitalize whitespace-nowrap text-xs mt-[.063rem]">
                 {product.badge}
               </p>
             </div>
           </div>
-        )}
+        ):<div></div>}
         <div className="relative cursor-pointer mx-auto w-full">
           <div className="aspect-w-1 aspect-h-1">
             <a
@@ -249,7 +242,7 @@ const ProductCards: React.FC<ProductCardProps> = ({ product }) => {
                 loading="eager"
                 decoding="async"
                 alt={product.title}
-                className="inline-block w-full h-full object-cover !h-[205px] max-w-[1023px]"
+                className="inline-block w-full h-full object-cover max-w-[1023px]"
                 height="205"
                 src={product.imageUrl}
                 srcSet={`${product.imageUrl}&dpr=1&q=75 1x, ${product.imageUrl}&dpr=2&q=50 2x, ${product.imageUrl}&dpr=3&q=35 3x, ${product.imageUrl}&dpr=4&q=23 4x, ${product.imageUrl}&dpr=5&q=20 5x`}
@@ -257,8 +250,8 @@ const ProductCards: React.FC<ProductCardProps> = ({ product }) => {
             </a>
           </div>
         </div>
-        <div className="flex flex-col gap-3 w-full">
-          <div className="flex items-baseline justify-between w-full flex-wrap">
+        <div className="flex flex-col gap-3 w-full flex-1 mb-8">
+          <div className="flex flex-1 items-baseline justify-between w-full flex-wrap">
             <h2 className="text-sm text-brown text-left font-primary leading-none flex-1 min-w-0">
               {product.title}
             </h2>
@@ -318,46 +311,189 @@ const ProductCards: React.FC<ProductCardProps> = ({ product }) => {
   );
 };
 
-// ProductCarousel Component
-const ProductCarousel: React.FC<ProductCarouselProps> = ({ products }) => {
-  return (
-    <div
-      className="swiper swiper-initialized swiper-horizontal completethelook-swiper w-full pb-0 swiper-backface-hidden"
-      aria-roledescription="Carousel displaying products"
-      aria-label="Product carousel: Navigate through products"
-      role="region"
-    >
-      <div
-        className="swiper-wrapper"
-        aria-live="polite"
-        style={{ transitionDuration: '0ms', transitionDelay: '0ms' }}
-      >
-        {products.map((product) => (
-          <ProductCards key={product.id} product={product} />
-        ))}
-      </div>
-      <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-    </div>
-  );
-};
-
 // Example Usage
 const products: Product[] = [
-  {
-    id: '7202127970436',
-    title: 'JERSEY LOUNGE MENS JOGGER | OBSIDIAN',
-    price: '₹7,300',
-    color: 'obsidian',
-    imageUrl:
-      'https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-TP-ZUP-5417M-OBS.jpg?v=1710447010&auto=format&ixlib=react-9.10.0&h=205&dpr=1&q=75',
-    badge: 'Styled With',
-  },
+      {
+        "title": "Fleece Lounge Mens Classic Straight Leg Pant",
+        "price": "₹8,200",
+        "color": "Washed Onyx",
+        "sizes": ["Select Size", "XS", "S", "M"],
+        "imageUrl": "https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-TP-ZUP-5417M-OBS.jpg?v=1710447010&auto=format&ixlib=react-9.10.0&h=205&dpr=1&q=75",
+        "badge": "Styled With",
+        "id":"1"
+      },
+      {
+        "id":"1",
+        "title": "Fleece Lounge Mens Relaxed Short",
+        "price": "₹5,950",
+        "color": "Washed Onyx",
+        "sizes": ["Select Size", "XS", "S", "M"],
+                "imageUrl": "https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-TP-ZUP-5417M-OBS.jpg?v=1710447010&auto=format&ixlib=react-9.10.0&h=205&dpr=1&q=75  ",
+
+      },
+      {
+        "id":"1",
+        "title": "Skims Stretch Mens 5\" Boxer Brief 3-Pack",
+        "price": "₹4,850",
+        "color": "Obsidian",
+        "sizes": ["Select Size", "XS", "S", "M"],
+                "imageUrl": "https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-TP-ZUP-5417M-OBS.jpg?v=1710447010&auto=format&ixlib=react-9.10.0&h=205&dpr=1&q=75  ",
+
+      },
+      {
+        "id":"1",
+        "title": "Mens Day Sock 3-Pack",
+        "price": "₹2,650",
+        "color": "Gunmetal Navy Multi",
+        "sizes": ["Select Size"],
+                "imageUrl": "https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-TP-ZUP-5417M-OBS.jpg?v=1710447010&auto=format&ixlib=react-9.10.0&h=205&dpr=1&q=75  ",
+
+      }
+    ]
   // Add more products here
-];
+const projectSection = [
+    {
+      "title": "Similar Styles",
+      "products": [
+        {
+          "name": "Mens Classic Hoodie",
+          "category": "Fleece Lounge",
+          "price": "₹7,850"
+        },
+        {
+          "name": "Mens Classic Hoodie",
+          "category": "Outdoor Jersey",
+          "price": "₹8,200"
+        },
+        {
+          "name": "Mens Hoodie",
+          "category": "Jersey Lounge",
+          "price": "₹6,800"
+        },
+        {
+          "name": "Mens Zip Up Hoodie",
+          "category": "Jersey Lounge",
+          "price": "₹7,250"
+        },
+        {
+          "name": "Mens Relaxed Zip Up Hoodie",
+          "category": "Fleece Lounge",
+          "price": "₹8,750"
+        },
+        {
+          "name": "Mens Classic Crewneck",
+          "category": "Terry",
+          "original_price": "₹3,200",
+          "discounted_price": "₹2,800"
+        }
+      ]
+    },
+    {
+      "title": "More in This Color",
+      "products": [
+        {
+          "name": "Mens Relaxed Jogger",
+          "category": "Fleece Lounge",
+          "price": "₹8,200"
+        },
+        {
+          "name": "Straight Leg Pant",
+          "category": "Boyfriend Fleece",
+          "price": "₹7,850"
+        },
+        {
+          "name": "Crewneck",
+          "category": "Boyfriend Fleece",
+          "price": "₹6,400"
+        },
+        {
+          "name": "Cargo Pant",
+          "category": "Boyfriend Fleece",
+          "price": "₹8,750"
+        },
+        {
+          "name": "Bike Short",
+          "category": "Outdoor",
+          "original_price": "₹2,800",
+          "discounted_price": "₹2,250"
+        },
+        {
+          "name": "Track Jacket",
+          "category": "Boyfriend Fleece",
+          "price": "₹8,750"
+        }
+      ]
+    },
+    {
+      "title": "Explore Collection",
+      "products": [
+        {
+          "name": "Mens Relaxed Short",
+          "category": "Fleece Lounge",
+          "price": "₹5,950"
+        },
+        {
+          "name": "Mens Classic Straight Leg Pant",
+          "category": "Fleece Lounge",
+          "price": "₹8,200"
+        },
+        {
+          "name": "Mens Tapered Jogger",
+          "category": "Fleece Lounge",
+          "price": "₹7,850"
+        },
+        {
+          "name": "Mens Classic Hoodie",
+          "category": "Fleece Lounge",
+          "price": "₹7,850"
+        },
+        {
+          "name": "Mens Classic Crewneck",
+          "category": "Fleece Lounge",
+          "price": "₹7,250"
+        },
+        {
+          "name": "Oversized Pant",
+          "category": "Fleece Lounge",
+          "price": "₹10,150"
+        }
+      ]
+    },
+    {
+      "title": "We Think You'd Like",
+      "products": [
+        {
+          "name": "Mens 5\" Boxer Brief",
+          "category": "Skims Stretch",
+          "price": "₹1,800"
+        },
+        {
+          "name": "Mens Classic Long Sleeve T-Shirt",
+          "category": "Skims Cotton",
+          "price": "₹4,500"
+        },
+        {
+          "name": "Cami Bodysuit",
+          "category": "Fits Everybody",
+          "price": "₹5,000"
+        },
+        {
+          "name": "Long Sleeve T-Shirt",
+          "category": "Cotton Jersey",
+          "price": "₹5,250"
+        },
+        {
+          "name": "Legging",
+          "category": "Cotton Rib",
+          "price": "₹5,250"
+        }
+      ]
+    }
+  ]
 
 const ProductPage: React.FC = () => {
   let { product } = useProductDetails();
-  const [activeImg,setActiveImg]=useState(0);
+  const [activeImg, setActiveImg] = useState(0);
   return (<>
     <div className=' mt-20'>
       <Breadcrumbs />
@@ -366,14 +502,13 @@ const ProductPage: React.FC = () => {
           <div className="w-full flex flex-row justify-items-start gap-6 overflow-x-hidden">
             <div className="w-28">
               <HorizontalCardList isVertical>{product.sliding_images.map((src, index) => (
-                <div key={index} className="" style={{ marginBottom: '10px' }} onClick={()=>setActiveImg(index)}>
-                  <img loading="eager" decoding="async" alt="" className={clsx("inline-block w-[106px] h-[106px] object-contain cursor-pointer",activeImg === index?'border p-[1px]':'')} width="106" height="106" src={src} />
+                <div key={index} className="" style={{ marginBottom: '10px' }} onClick={() => setActiveImg(index)}>
+                  <img loading="eager" decoding="async" alt="" className={clsx("inline-block w-[106px] h-[106px] object-contain cursor-pointer", activeImg === index ? 'border p-[1px]' : '')} width="106" height="106" src={src} />
                 </div>
               ))}
               </HorizontalCardList>
             </div>
             <div className='flex-1 relative'>
-              {/* <HorizontalCardList>{product.sliding_images.map(el => <img loading="eager" decoding="async" alt="" className="object-cover" src={`${el.split("?")[0]}?auto=format&w=2000&h=2000&q=100`} />)}</HorizontalCardList> */}
               <HorizontalCardList lastIndex={product.sliding_images.length} setActiveImg={setActiveImg} >{[<img loading="eager" decoding="async" alt="" className="object-cover" src={`${product.sliding_images[activeImg].split("?")[0]}?auto=format&w=2000&h=2000&q=100`} />]}</HorizontalCardList>
             </div>
           </div>
@@ -411,8 +546,8 @@ const ProductPage: React.FC = () => {
                   </div>
                 </div>
               </div>}
-              <ProductForm product={product}/>
-              <ProductDetails product={product}/>
+              <ProductForm product={product} />
+              <ProductDetails product={product} />
             </div>
           </div>
         </div>
@@ -423,27 +558,28 @@ const ProductPage: React.FC = () => {
       <div className="flex items-center justify-start pl-5 md:!justify-center md:pl-0 mb-5 relative">
         <h2 className="text-xl text-brown text-center font-primary leading-none">Complete the Look</h2>
       </div>
-      <div className="flex items-center w-full mx-auto relative !bg-grayLighter p-5">
-        <ProductCarousel products={products} />
-        <ProductCarousel products={products} />
-        <ProductCarousel products={products} />
-        <ProductCarousel products={products} />
-        <ProductCarousel products={products} />
-        <ProductCarousel products={products} />
-        <ProductCarousel products={products} />
-        <ProductCarousel products={products} />
-        <ProductCarousel products={products} />
+      <div className="flex items-center justify-center w-full mx-auto relative !bg-grayLighter p-5">
+        <HorizontalCardList isHidScrollerBtn>
+        {products.map((product) => (
+              <div className="w-full m-4">
+                <ProductCards key={product.id} product={product} />
+              </div>
+        ))}
+        </HorizontalCardList>
       </div>
     </section>
-    <div className="section relative">
-      <HorizontalCardList>{dd.map((el: any) => <ProductCard product={el} />)}</HorizontalCardList>
-    </div>
-    <div className="section relative">
-      <HorizontalCardList>{dd.map((el: any) => <ProductCard product={el} />)}</HorizontalCardList>
-    </div>
-    <div className="section relative">
-      <HorizontalCardList>{dd.map((el: any) => <ProductCard product={el} />)}</HorizontalCardList>
-    </div>
+    {projectSection.map(el=>(
+      <section className="w-full mt-4">
+        <div className="flex items-center justify-start pl-5 md:!justify-center md:pl-0 mb-5 relative">
+          <h2 className="text-xl text-brown text-center font-primary leading-none">{el.title}</h2>
+        </div>
+        <div>
+          <HorizontalCardList>
+            {el.products.map((ele: any) => <ProductCard product={ele}/>)}
+          </HorizontalCardList>
+        </div>
+      </section>
+    ))}
   </>
   );
 };

@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { FC, ReactNode, useRef, useState, useEffect } from "react";
 
-const HorizontalCardList: FC<{ children: ReactNode[], header?: string, isVertical?: boolean,setActiveImg?:any,lastIndex?:number }> = ({ children, header, isVertical = false ,setActiveImg,lastIndex}) => {
+const HorizontalCardList: FC<{ className?:string, children: ReactNode[], header?: string, isVertical?: boolean,setActiveImg?:any,lastIndex?:number,isHidScrollerBtn?:boolean }> = ({ children, header,isHidScrollerBtn=false, isVertical = false ,setActiveImg,lastIndex}) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(1);
   const [totalItems, setTotalItems] = useState(children.length);
@@ -69,13 +69,11 @@ const HorizontalCardList: FC<{ children: ReactNode[], header?: string, isVertica
           </div>
         </div>
       )}
-      <div
-        className={clsx("horizontal-card-list", isVertical ? "flex-col overflow-y-auto max-h-[500px]" : "flex overflow-x-auto")}
-        ref={scrollRef}
+      <div className={clsx("horizontal-card-list", isVertical ? "flex-col overflow-y-auto max-h-[500px]" : "flex overflow-x-auto justify-center")} ref={scrollRef}
       >
-        {!header && !isVertical && BtnHandler(true)}
+        {!isHidScrollerBtn && !header && !isVertical && BtnHandler(true)}
         {children}
-        {!header && !isVertical && BtnHandler(false)}
+        {!isHidScrollerBtn && !header && !isVertical && BtnHandler(false)}
       </div>
     </>
   );
