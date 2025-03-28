@@ -3,18 +3,18 @@ import React from 'react';
 
 const HeaderLinks: React.FC = () => {
   const links = [
-    { text: 'new', href: '/en-in/collections/new-arrivals' },
-    { text: 'Best Sellers', href: '/en-in/collections/best-sellers' },
-    { text: 'WEDDING SHOP', href: '/en-in/collections/wedding-shop' },
-    { text: 'Bras', href: '/en-in/collections/bras' },
-    { text: 'Underwear', href: '/en-in/collections/underwear' },
-    { text: 'Clothing', href: '/en-in/collections/clothing' },
-    { text: 'shapewear', href: '/en-in/collections/shapewear' },
-    { text: 'Swim', href: '/en-in/collections/swim' },
-    { text: 'Mens', href: '/en-in/collections/menswear' },
-    { text: 'collections', href: '/en-in/pages/skims-collections' },
+    { text: 'new', href: "#" },
+    { text: 'Best Sellers', href: "#" },
+    { text: 'WEDDING SHOP', href: "#" },
+    { text: 'Bras', href: "#" },
+    { text: 'Underwear', href: "#" },
+    { text: 'Clothing', href: "#" },
+    { text: 'shapewear', href: "#" },
+    { text: 'Swim', href: "#" },
+    { text: 'Mens', href: "#" },
+    { text: 'collections', href: "#" },
     { text: 'More', href: '#' },
-    { text: 'Sale', href: '/en-in/collections/skims-sale' },
+    { text: 'Sale', href: "#" },
   ];
 
   return (

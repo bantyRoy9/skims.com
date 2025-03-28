@@ -154,7 +154,7 @@ const AddToCardDrawer = (props: Props) => {
           <button className="flex items-center justify-center px-4 pt-4 pb-3.5 transition-colors font-primary text-base leading-none border border-primary bg-primary text-white hover:bg-secondary hover:border-secondary disabled:bg-white disabled:text-tertiary disabled:border-tertiary !w-full">
             <span><span>₹{calculateTotalMRP(addtocard)}</span> - Checkout</span>
           </button>
-          <a className="mt-4 w-full text-center font-quinary text-xs underline transition-colors text-primary hover:text-secondary underline-offset-4 hidden md:block" title="View Bag" color="brown" data-discover="true" href="/en-in/cart">View Bag</a>
+          <a className="mt-4 w-full text-center font-quinary text-xs underline transition-colors text-primary hover:text-secondary underline-offset-4 hidden md:block" title="View Bag" color="brown" data-discover="true" href="#">View Bag</a>
         </div>
       </div>
       : <EmptyBagMessage onShopBestsellers={handleShopBestsellers} />

@@ -2,12 +2,12 @@ import React, { memo } from 'react'
 import AddToCartButton from '../Buttons/AddToCartButton';
 import { useNavigate } from 'react-router-dom';
 import { IProductCard } from '../../Utils/Const';
-const ProductCard = ({ product, addProduct, addtocard, width = 140, activecard = null }: IProductCard) => {
-    const nagivate = useNavigate(), isproduct = typeof product === "object" ? true : false;
+const ProductCard = ({ product,className, addProduct, addtocard, width = 140, activecard = null,isproduct }: IProductCard) => {
+    const nagivate = useNavigate();
     console.log('working');
 
     return (
-        <button onClick={(e) => { e.stopPropagation(); nagivate(isproduct ? `product` : `#${activecard}`) }} key={product?.id ?? product} className={`card ${isproduct ? '' : 'slidecard'} ${activecard === -1 ? 'border-green-600' : 'border-[#e8e8e8]'}`}>
+        <button onClick={(e) => { e.stopPropagation(); nagivate(isproduct) }} key={product?.id ?? product} className={`card ${isproduct ? '' : 'slidecard'} ${activecard === -1 ? 'border-green-600' : 'border-[#e8e8e8]'}`}>
             {/* <div className="card-content">
                 <img loading="eager" decoding="async" alt="" sizes="(max-width: 1023px) 35vw, 25vw" className="inline-block   object-contain w-full h-full" src="https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-AP-DRS-0596-CLO-FLT_grande.jpg?v=1740612371&amp;auto=format&amp;ixlib=react-9.10.0" srcSet="https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-AP-DRS-0596-CLO-FLT_grande.jpg?v=1740612371&amp;auto=format&amp;ixlib=react-9.10.0&amp;w=100 100w,
 https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-AP-DRS-0596-CLO-FLT_grande.jpg?v=1740612371&amp;auto=format&amp;ixlib=react-9.10.0&amp;w=116 116w,

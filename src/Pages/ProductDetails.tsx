@@ -31,16 +31,6 @@ const ProductDetails: React.FC<{ product: IProduct }> = ({ product }) => {
                 <h2 className="text-sm text-primary text-center font-primary leading-none whitespace-nowrap">Details</h2>
               </button>
             </li>
-            {/* <li className="z-10">
-              <button className="px-6 py-4 border-b border-grayDarker" role="tab" aria-selected="false" aria-controls="productDetails-1" id="productDetailsTab-1" tabIndex={-1}>
-                <h2 className="text-sm text-sienna text-center font-primary leading-none whitespace-nowrap">Fit & Fabric</h2>
-              </button>
-            </li>
-            <li className="z-10">
-              <button className="px-6 py-4 border-b border-grayDarker" role="tab" aria-selected="false" aria-controls="productDetails-2" id="productDetailsTab-2" tabIndex={-1}>
-                <h2 className="text-sm text-sienna text-center font-primary leading-none whitespace-nowrap">Shipping & Returns</h2>
-              </button>
-            </li> */}
           </ul>
           <div className="p-6 font-tertiary text-primary text-xs tabbed-details" id="productDetails-0" role="tabpanel" aria-labelledby="productDetailsTab-0" tabIndex={0}>
             <div>
@@ -205,291 +195,266 @@ interface Product {
   color: string;
   imageUrl: string;
   badge?: string;
-  sizes?:string[]
+  sizes?: string[]
 }
 
-interface ProductCardProps {
-  product: Product;
-}
-
-interface ProductCarouselProps {
-  products: Product[];
-}
-
-// ProductCard Component
-const ProductCards: React.FC<ProductCardProps> = ({ product }) => {
-  return (
-    <div className="cursor-pointer bg-white h-full pt-4 pl-4 pr-4 w-[15.625rem] min-h-[22.125rem] md:min-h-[27rem] md:w-[18.2rem]">
-      <div className="relative h-full w-full flex flex-col flex-1 gap-3 select-none">
-        {product.badge ? (
-          <div id={`badge-${product.id}`}>
-            <div className="border border-primary rounded-sm text-center bg-primary text-white py-0.5 px-1.5 absolute top-0 left-0 z-10" role="tooltip">
-              <p className="font-primary capitalize whitespace-nowrap text-xs mt-[.063rem]">
-                {product.badge}
-              </p>
-            </div>
-          </div>
-        ):<div></div>}
-        <div className="relative cursor-pointer mx-auto w-full">
-          <div className="aspect-w-1 aspect-h-1">
-            <a
-              className="flex items-center"
-              title={product.title}
-              data-discover="true"
-              href={`/products/${product.id}`}
-            >
-              <img
-                loading="eager"
-                decoding="async"
-                alt={product.title}
-                className="inline-block w-full h-full object-cover max-w-[1023px]"
-                height="205"
-                src={product.imageUrl}
-                srcSet={`${product.imageUrl}&dpr=1&q=75 1x, ${product.imageUrl}&dpr=2&q=50 2x, ${product.imageUrl}&dpr=3&q=35 3x, ${product.imageUrl}&dpr=4&q=23 4x, ${product.imageUrl}&dpr=5&q=20 5x`}
-              />
-            </a>
-          </div>
-        </div>
-        <div className="flex flex-col gap-3 w-full flex-1 mb-8">
-          <div className="flex flex-1 items-baseline justify-between w-full flex-wrap">
-            <h2 className="text-sm text-brown text-left font-primary leading-none flex-1 min-w-0">
-              {product.title}
-            </h2>
-            <p className="text-sm text-brown text-right leading-none mb-0 shrink-0 self-start font-secondary">
-              <span className="whitespace-nowrap">{product.price}</span>
-            </p>
-          </div>
-          <div className="flex-1 flex flex-col justify-end">
-            <p className="text-xs text-onyx m-0 font-quinary uppercase">
-              Color: <span>{product.color}</span>
-            </p>
-            <div className="flex justify-between">
-              <div className="relative mt-[10px] flex-1">
-                <div className="inline-flex flex-col items-start w-full">
-                  <label
-                    className="font-quinary tracking-wide text-xs leading-normal mb-2 text-primary sr-only"
-                    htmlFor={`select-Size-${product.id}`}
-                  >
-                    Select Size
-                  </label>
-                  <div className="relative w-full">
-                    <button
-                      className="relative w-full flex items-center appearance-none h-9 px-2 grow py-2 pl-3 pr-8 font-p text-sm tracking-normal leading-normal text-primary border disabled:border-tertiary focus:border-sienna focus-within:border-sienna border-primary bg-white disabled:text-tertiary cursor-default disabled:cursor-not-allowed outline-none ring-0"
-                      id={`select-Size-${product.id}`}
-                      type="button"
-                      aria-haspopup="listbox"
-                      aria-expanded="false"
-                    >
-                      <span className="block truncate pr-8 font-quinary text-xs">
-                        Select Size
-                      </span>
-                      <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                        <svg
-                          viewBox="0 0 16 16"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-4 w-4 text-brown transform transition-transform duration-150 ease-in-out rotate-0"
-                          aria-hidden="true"
-                        >
-                          <path
-                            d="M13 5.5L8 10.5L3 5.5"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 // Example Usage
 const products: Product[] = [
+  {
+    "title": "Fleece Lounge Mens Classic Straight Leg Pant",
+    "price": "₹8,200",
+    "color": "Washed Onyx",
+    "sizes": ["Select Size", "XS", "S", "M"],
+    "imageUrl": "https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-TP-ZUP-5417M-OBS.jpg?v=1710447010&auto=format&ixlib=react-9.10.0&h=205&dpr=1&q=75",
+    "badge": "Styled With",
+    "id": "1"
+  },
+  {
+    "id": "1",
+    "title": "Fleece Lounge Mens Relaxed Short",
+    "price": "₹5,950",
+    "color": "Washed Onyx",
+    "sizes": ["Select Size", "XS", "S", "M"],
+    "imageUrl": "https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-TP-ZUP-5417M-OBS.jpg?v=1710447010&auto=format&ixlib=react-9.10.0&h=205&dpr=1&q=75  ",
+
+  },
+  {
+    "id": "1",
+    "title": "Skims Stretch Mens 5\" Boxer Brief 3-Pack",
+    "price": "₹4,850",
+    "color": "Obsidian",
+    "sizes": ["Select Size", "XS", "S", "M"],
+    "imageUrl": "https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-TP-ZUP-5417M-OBS.jpg?v=1710447010&auto=format&ixlib=react-9.10.0&h=205&dpr=1&q=75  ",
+
+  },
+  {
+    "id": "1",
+    "title": "Mens Day Sock 3-Pack",
+    "price": "₹2,650",
+    "color": "Gunmetal Navy Multi",
+    "sizes": ["Select Size"],
+    "imageUrl": "https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-TP-ZUP-5417M-OBS.jpg?v=1710447010&auto=format&ixlib=react-9.10.0&h=205&dpr=1&q=75  ",
+
+  }
+]
+// Add more products here
+const projectSection = [
+  {
+    "title": "Similar Styles",
+    "products": [
       {
-        "title": "Fleece Lounge Mens Classic Straight Leg Pant",
-        "price": "₹8,200",
-        "color": "Washed Onyx",
-        "sizes": ["Select Size", "XS", "S", "M"],
-        "imageUrl": "https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-TP-ZUP-5417M-OBS.jpg?v=1710447010&auto=format&ixlib=react-9.10.0&h=205&dpr=1&q=75",
-        "badge": "Styled With",
-        "id":"1"
+        "name": "Mens Classic Hoodie",
+        "category": "Fleece Lounge",
+        "price": "₹7,850"
       },
       {
-        "id":"1",
-        "title": "Fleece Lounge Mens Relaxed Short",
-        "price": "₹5,950",
-        "color": "Washed Onyx",
-        "sizes": ["Select Size", "XS", "S", "M"],
-                "imageUrl": "https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-TP-ZUP-5417M-OBS.jpg?v=1710447010&auto=format&ixlib=react-9.10.0&h=205&dpr=1&q=75  ",
-
+        "name": "Mens Classic Hoodie",
+        "category": "Outdoor Jersey",
+        "price": "₹8,200"
       },
       {
-        "id":"1",
-        "title": "Skims Stretch Mens 5\" Boxer Brief 3-Pack",
-        "price": "₹4,850",
-        "color": "Obsidian",
-        "sizes": ["Select Size", "XS", "S", "M"],
-                "imageUrl": "https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-TP-ZUP-5417M-OBS.jpg?v=1710447010&auto=format&ixlib=react-9.10.0&h=205&dpr=1&q=75  ",
-
+        "name": "Mens Classic Hoodie",
+        "category": "Outdoor Jersey",
+        "price": "₹8,200"
       },
       {
-        "id":"1",
-        "title": "Mens Day Sock 3-Pack",
-        "price": "₹2,650",
-        "color": "Gunmetal Navy Multi",
-        "sizes": ["Select Size"],
-                "imageUrl": "https://skims.imgix.net/s/files/1/0259/5448/4284/files/SKIMS-LOUNGEWEAR-TP-ZUP-5417M-OBS.jpg?v=1710447010&auto=format&ixlib=react-9.10.0&h=205&dpr=1&q=75  ",
-
+        "name": "Mens Classic Hoodie",
+        "category": "Outdoor Jersey",
+        "price": "₹8,200"
+      },
+      {
+        "name": "Mens Classic Hoodie",
+        "category": "Outdoor Jersey",
+        "price": "₹8,200"
+      },
+      {
+        "name": "Mens Hoodie",
+        "category": "Jersey Lounge",
+        "price": "₹6,800"
+      },
+      {
+        "name": "Mens Zip Up Hoodie",
+        "category": "Jersey Lounge",
+        "price": "₹7,250"
+      },
+      {
+        "name": "Mens Relaxed Zip Up Hoodie",
+        "category": "Fleece Lounge",
+        "price": "₹8,750"
+      },
+      {
+        "name": "Mens Classic Crewneck",
+        "category": "Terry",
+        "original_price": "₹3,200",
+        "discounted_price": "₹2,800"
       }
     ]
-  // Add more products here
-const projectSection = [
-    {
-      "title": "Similar Styles",
-      "products": [
-        {
-          "name": "Mens Classic Hoodie",
-          "category": "Fleece Lounge",
-          "price": "₹7,850"
-        },
-        {
-          "name": "Mens Classic Hoodie",
-          "category": "Outdoor Jersey",
-          "price": "₹8,200"
-        },
-        {
-          "name": "Mens Hoodie",
-          "category": "Jersey Lounge",
-          "price": "₹6,800"
-        },
-        {
-          "name": "Mens Zip Up Hoodie",
-          "category": "Jersey Lounge",
-          "price": "₹7,250"
-        },
-        {
-          "name": "Mens Relaxed Zip Up Hoodie",
-          "category": "Fleece Lounge",
-          "price": "₹8,750"
-        },
-        {
-          "name": "Mens Classic Crewneck",
-          "category": "Terry",
-          "original_price": "₹3,200",
-          "discounted_price": "₹2,800"
-        }
-      ]
-    },
-    {
-      "title": "More in This Color",
-      "products": [
-        {
-          "name": "Mens Relaxed Jogger",
-          "category": "Fleece Lounge",
-          "price": "₹8,200"
-        },
-        {
-          "name": "Straight Leg Pant",
-          "category": "Boyfriend Fleece",
-          "price": "₹7,850"
-        },
-        {
-          "name": "Crewneck",
-          "category": "Boyfriend Fleece",
-          "price": "₹6,400"
-        },
-        {
-          "name": "Cargo Pant",
-          "category": "Boyfriend Fleece",
-          "price": "₹8,750"
-        },
-        {
-          "name": "Bike Short",
-          "category": "Outdoor",
-          "original_price": "₹2,800",
-          "discounted_price": "₹2,250"
-        },
-        {
-          "name": "Track Jacket",
-          "category": "Boyfriend Fleece",
-          "price": "₹8,750"
-        }
-      ]
-    },
-    {
-      "title": "Explore Collection",
-      "products": [
-        {
-          "name": "Mens Relaxed Short",
-          "category": "Fleece Lounge",
-          "price": "₹5,950"
-        },
-        {
-          "name": "Mens Classic Straight Leg Pant",
-          "category": "Fleece Lounge",
-          "price": "₹8,200"
-        },
-        {
-          "name": "Mens Tapered Jogger",
-          "category": "Fleece Lounge",
-          "price": "₹7,850"
-        },
-        {
-          "name": "Mens Classic Hoodie",
-          "category": "Fleece Lounge",
-          "price": "₹7,850"
-        },
-        {
-          "name": "Mens Classic Crewneck",
-          "category": "Fleece Lounge",
-          "price": "₹7,250"
-        },
-        {
-          "name": "Oversized Pant",
-          "category": "Fleece Lounge",
-          "price": "₹10,150"
-        }
-      ]
-    },
-    {
-      "title": "We Think You'd Like",
-      "products": [
-        {
-          "name": "Mens 5\" Boxer Brief",
-          "category": "Skims Stretch",
-          "price": "₹1,800"
-        },
-        {
-          "name": "Mens Classic Long Sleeve T-Shirt",
-          "category": "Skims Cotton",
-          "price": "₹4,500"
-        },
-        {
-          "name": "Cami Bodysuit",
-          "category": "Fits Everybody",
-          "price": "₹5,000"
-        },
-        {
-          "name": "Long Sleeve T-Shirt",
-          "category": "Cotton Jersey",
-          "price": "₹5,250"
-        },
-        {
-          "name": "Legging",
-          "category": "Cotton Rib",
-          "price": "₹5,250"
-        }
-      ]
-    }
-  ]
+  },
+  {
+    "title": "More in This Color",
+    "products": [
+      {
+        "name": "Mens Relaxed Jogger",
+        "category": "Fleece Lounge",
+        "price": "₹8,200"
+      },
+      {
+        "name": "Straight Leg Pant",
+        "category": "Boyfriend Fleece",
+        "price": "₹7,850"
+      },
+      {
+        "name": "Straight Leg Pant",
+        "category": "Boyfriend Fleece",
+        "price": "₹7,850"
+      },
+      {
+        "name": "Straight Leg Pant",
+        "category": "Boyfriend Fleece",
+        "price": "₹7,850"
+      },
+      {
+        "name": "Straight Leg Pant",
+        "category": "Boyfriend Fleece",
+        "price": "₹7,850"
+      },
+      {
+        "name": "Crewneck",
+        "category": "Boyfriend Fleece",
+        "price": "₹6,400"
+      },
+      {
+        "name": "Cargo Pant",
+        "category": "Boyfriend Fleece",
+        "price": "₹8,750"
+      },
+      {
+        "name": "Bike Short",
+        "category": "Outdoor",
+        "original_price": "₹2,800",
+        "discounted_price": "₹2,250"
+      },
+      {
+        "name": "Track Jacket",
+        "category": "Boyfriend Fleece",
+        "price": "₹8,750"
+      }
+    ]
+  },
+  {
+    "title": "Explore Collection",
+    "products": [
+      {
+        "name": "Mens Relaxed Short",
+        "category": "Fleece Lounge",
+        "price": "₹5,950"
+      },
+      {
+        "name": "Mens Classic Straight Leg Pant",
+        "category": "Fleece Lounge",
+        "price": "₹8,200"
+      },
+      {
+        "name": "Mens Tapered Jogger",
+        "category": "Fleece Lounge",
+        "price": "₹7,850"
+      },
+      {
+        "name": "Mens Classic Hoodie",
+        "category": "Fleece Lounge",
+        "price": "₹7,850"
+      },
+      {
+        "name": "Mens Classic Crewneck",
+        "category": "Fleece Lounge",
+        "price": "₹7,250"
+      },
+      {
+        "name": "Oversized Pant",
+        "category": "Fleece Lounge",
+        "price": "₹10,150"
+      },
+      {
+        "name": "Oversized Pant",
+        "category": "Fleece Lounge",
+        "price": "₹10,150"
+      },
+      {
+        "name": "Oversized Pant",
+        "category": "Fleece Lounge",
+        "price": "₹10,150"
+      },
+      {
+        "name": "Oversized Pant",
+        "category": "Fleece Lounge",
+        "price": "₹10,150"
+      },
+      {
+        "name": "Oversized Pant",
+        "category": "Fleece Lounge",
+        "price": "₹10,150"
+      }
+    ]
+  },
+  {
+    "title": "We Think You'd Like",
+    "products": [
+      {
+        "name": "Mens 5\" Boxer Brief",
+        "category": "Skims Stretch",
+        "price": "₹1,800"
+      },
+      {
+        "name": "Mens Classic Long Sleeve T-Shirt",
+        "category": "Skims Cotton",
+        "price": "₹4,500"
+      },
+      {
+        "name": "Cami Bodysuit",
+        "category": "Fits Everybody",
+        "price": "₹5,000"
+      },
+      {
+        "name": "Long Sleeve T-Shirt",
+        "category": "Cotton Jersey",
+        "price": "₹5,250"
+      },
+      {
+        "name": "Long Sleeve T-Shirt",
+        "category": "Cotton Jersey",
+        "price": "₹5,250"
+      },
+      {
+        "name": "Long Sleeve T-Shirt",
+        "category": "Cotton Jersey",
+        "price": "₹5,250"
+      },
+      {
+        "name": "Legging",
+        "category": "Cotton Rib",
+        "price": "₹5,250"
+      }
+      ,
+      {
+        "name": "Legging",
+        "category": "Cotton Rib",
+        "price": "₹5,250"
+      }
+      ,
+      {
+        "name": "Legging",
+        "category": "Cotton Rib",
+        "price": "₹5,250"
+      },
+      {
+        "name": "Legging",
+        "category": "Cotton Rib",
+        "price": "₹5,250"
+      }
+    ]
+  }
+]
 
 const ProductPage: React.FC = () => {
   let { product } = useProductDetails();
@@ -560,22 +525,110 @@ const ProductPage: React.FC = () => {
       </div>
       <div className="flex items-center justify-center w-full mx-auto relative !bg-grayLighter p-5">
         <HorizontalCardList isHidScrollerBtn>
-        {products.map((product) => (
-              <div className="w-full m-4">
-                <ProductCards key={product.id} product={product} />
+          {products.map((product) => (
+            <div className="w-full m-4">
+              <div className="cursor-pointer bg-white h-full pt-4 pl-4 pr-4 w-[15.625rem] min-h-[22.125rem] md:min-h-[27rem] md:w-[18.2rem]">
+                <div className="relative h-full w-full flex flex-col flex-1 gap-3 select-none">
+                  {product.badge ? (
+                    <div id={`badge-${product.id}`}>
+                      <div className="border border-primary rounded-sm text-center bg-primary text-white py-0.5 px-1.5 absolute top-0 left-0 z-10" role="tooltip">
+                        <p className="font-primary capitalize whitespace-nowrap text-xs mt-[.063rem]">
+                          {product.badge}
+                        </p>
+                      </div>
+                    </div>
+                  ) : <div></div>}
+                  <div className="relative cursor-pointer mx-auto w-full">
+                    <div className="aspect-w-1 aspect-h-1">
+                      <a
+                        className="flex items-center"
+                        title={product.title}
+                        data-discover="true"
+                        href={`/products/${product.id}`}
+                      >
+                        <img
+                          loading="eager"
+                          decoding="async"
+                          alt={product.title}
+                          className="inline-block w-full h-full object-cover max-w-[1023px]"
+                          height="205"
+                          src={product.imageUrl}
+                          srcSet={`${product.imageUrl}&dpr=1&q=75 1x, ${product.imageUrl}&dpr=2&q=50 2x, ${product.imageUrl}&dpr=3&q=35 3x, ${product.imageUrl}&dpr=4&q=23 4x, ${product.imageUrl}&dpr=5&q=20 5x`}
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-3 w-full flex-1 mb-8">
+                    <div className="flex flex-1 items-baseline justify-between w-full flex-wrap">
+                      <h2 className="text-sm text-brown text-left font-primary leading-none flex-1 min-w-0">
+                        {product.title}
+                      </h2>
+                      <p className="text-sm text-brown text-right leading-none mb-0 shrink-0 self-start font-secondary">
+                        <span className="whitespace-nowrap">{product.price}</span>
+                      </p>
+                    </div>
+                    <div className="flex-1 flex flex-col justify-end">
+                      <p className="text-xs text-onyx m-0 font-quinary uppercase">
+                        Color: <span>{product.color}</span>
+                      </p>
+                      <div className="flex justify-between">
+                        <div className="relative mt-[10px] flex-1">
+                          <div className="inline-flex flex-col items-start w-full">
+                            <label
+                              className="font-quinary tracking-wide text-xs leading-normal mb-2 text-primary sr-only"
+                              htmlFor={`select-Size-${product.id}`}
+                            >
+                              Select Size
+                            </label>
+                            <div className="relative w-full">
+                              <button
+                                className="relative w-full flex items-center appearance-none h-9 px-2 grow py-2 pl-3 pr-8 font-p text-sm tracking-normal leading-normal text-primary border disabled:border-tertiary focus:border-sienna focus-within:border-sienna border-primary bg-white disabled:text-tertiary cursor-default disabled:cursor-not-allowed outline-none ring-0"
+                                id={`select-Size-${product.id}`}
+                                type="button"
+                                aria-haspopup="listbox"
+                                aria-expanded="false"
+                              >
+                                <span className="block truncate pr-8 font-quinary text-xs">
+                                  Select Size
+                                </span>
+                                <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                                  <svg
+                                    viewBox="0 0 16 16"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-4 w-4 text-brown transform transition-transform duration-150 ease-in-out rotate-0"
+                                    aria-hidden="true"
+                                  >
+                                    <path
+                                      d="M13 5.5L8 10.5L3 5.5"
+                                      stroke="currentColor"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    />
+                                  </svg>
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-        ))}
+            </div>
+          ))}
         </HorizontalCardList>
       </div>
     </section>
-    {projectSection.map(el=>(
+    {projectSection.map(el => (
       <section className="w-full mt-4">
-        <div className="flex items-center justify-start pl-5 md:!justify-center md:pl-0 mb-5 relative">
+        {/* <div className="flex items-center justify-start pl-5 md:!justify-center md:pl-0 mb-5 relative">
           <h2 className="text-xl text-brown text-center font-primary leading-none">{el.title}</h2>
-        </div>
-        <div>
-          <HorizontalCardList>
-            {el.products.map((ele: any) => <ProductCard product={ele}/>)}
+        </div> */}
+        <div className='relative'>
+          <HorizontalCardList header={el.title}>
+            {el.products.map((ele: any) => <ProductCard product={ele} isproduct='#'/>)}
           </HorizontalCardList>
         </div>
       </section>

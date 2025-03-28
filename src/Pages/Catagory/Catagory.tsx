@@ -76,7 +76,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             title={title}
             rel=""
             data-discover="true"
-            href={`/en-in/products/${id}`}
+            href={`#`}
             target="_self"
           >
             <div className="w-full">
@@ -146,12 +146,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
             <a
               className="select-none hover:cursor-pointer focus:outline-none text-left"
               role="link"
-              data-href={`/products/${id}`}
+              data-href={`#`}
               tabIndex={0}
               title={title}
               rel=""
               data-discover="true"
-              href={`/en-in/products/${id}`}
+              href={`#`}
               target="_self"
             >
               <p className="font-quinary uppercase !text-sienna text-xxs mb-1.5 md:!text-xs md:!mb-2">FLEECE LOUNGE</p>

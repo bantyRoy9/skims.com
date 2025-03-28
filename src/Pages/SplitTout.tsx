@@ -45,7 +45,7 @@ const SplitTout: React.FC = () => {
           </Link>
 
           {/* Second Link */}
-          <Link className="select-none hover:cursor-pointer focus:outline-none relative w-full lg:flex-auto cursor-pointer self-center flex" to="/en-in/collections/mens-underwear" target="_self">
+          <Link className="select-none hover:cursor-pointer focus:outline-none relative w-full lg:flex-auto cursor-pointer self-center flex" to="#" target="_self">
             <div className="p-6 lg:p-14 max-w-xl absolute bottom-0 left-0">
               <h2 className="text-2xl text-left font-primary leading-tight" style={{ color: 'rgb(246, 246, 246)' }}>
                 THE BEST UNDERWEAR BUNDLE

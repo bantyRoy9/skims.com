@@ -56,7 +56,7 @@ const HorizontalCardList: FC<{ className?:string, children: ReactNode[], header?
     <>
       {header && (
         <div className="w-full flex justify-between items-center px-6 md:px-0 h-20">
-          <h2 className="text-xl text-brown font-primary leading-none px-4 -ml-4 text-left md:ml-0 md:!text-center">{header}</h2>
+          <h2 className="text-xl text-brown font-primary leading-none px-4 -ml-4 text-left flex-1 md:ml-0 md:!text-center">{header}</h2>
           <div className="hidden md:!flex items-center min-w-36">
             {BtnHandler(true)}
             <div className="font-quinary text-xs px-4">

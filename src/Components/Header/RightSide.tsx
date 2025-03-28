@@ -28,7 +28,7 @@ const SearchButton: React.FC = () => {
 
 const AccountButton: React.FC = () => {
   return (
-    <a aria-label="Account" data-discover="true" className="hidden md:flex" href="/en-in/account">
+    <a aria-label="Account" data-discover="true" className="hidden md:flex" href="#">
       <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 p-[.188rem]">
         <path d="M16.9378 16.9995C16.9378 12.8745 13.5965 9.5332 9.47148 9.5332C5.34644 9.5332 2 12.8796 2 16.9995M12.8446 4.37738C12.8446 6.24265 11.3325 7.75475 9.46722 7.75475C7.60195 7.75475 6.08984 6.24265 6.08984 4.37738C6.08984 2.5121 7.60195 1 9.46722 1C11.3325 1 12.8446 2.5121 12.8446 4.37738Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
       </svg>
@@ -38,7 +38,7 @@ const AccountButton: React.FC = () => {
 
 const WishlistButton: React.FC = () => {
   return (
-    <a aria-label="Wishlist" data-discover="true" className="flex" href="/en-in/pages/wishlist">
+    <a aria-label="Wishlist" data-discover="true" className="flex" href="#">
       <div className="relative w-6 h"></div></a>)
 };
 const AddtocardButton: React.FC = () => {

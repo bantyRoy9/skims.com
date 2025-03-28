@@ -13,7 +13,7 @@ function Breadcrumbs() {
             title="Home"
             rel=""
             data-discover="true"
-            href="/en-in"
+            href="#"
             target="_self"
           >
             <p className="text-xs text-primary font-quinary">Home</p>
@@ -31,7 +31,7 @@ function Breadcrumbs() {
             title="Men's Loungewear"
             rel=""
             data-discover="true"
-            href="/en-in/collections/mens-loungewear"
+            href="#"
             target="_self"
           >
             <p className="text-xs text-primary font-quinary">Men's Loungewear</p>
@@ -44,12 +44,12 @@ function Breadcrumbs() {
           <a
             className="select-none hover:cursor-pointer focus:outline-none block"
             role="link"
-            data-href="/collections/mens-tees-tanks"
+            data-href="#"
             tabIndex={0}
             title="Men's T-Shirts &amp; Tanks"
             rel=""
             data-discover="true"
-            href="/en-in/collections/mens-tees-tanks"
+            href="#"
             target="_self"
           >
             <p className="text-xs text-primary font-quinary">Men's T-Shirts &amp; Tanks</p>
